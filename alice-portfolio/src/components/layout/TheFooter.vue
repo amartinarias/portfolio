@@ -74,7 +74,7 @@
           </a>
         </div>
         <div class="copyright">
-          &copy; {{ currentYear }} Alice Martin | Built with Vue.js & Three.js
+          &copy; {{ currentYear }} Alice Martin | Built with Vue.js
         </div>
       </div>
     </div>
