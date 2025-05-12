@@ -9,7 +9,7 @@
         nature-inspired design
       </p>
       <div class="cta-buttons">
-        <router-link to="/projects" class="btn primary"
+        <router-link to="/skills-and-projects" class="btn primary"
           >View Projects</router-link
         >
         <router-link to="/contact" class="btn secondary"

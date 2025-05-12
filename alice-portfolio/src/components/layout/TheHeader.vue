@@ -31,8 +31,8 @@ const menuOpen = ref(false);
 const navItems = [
   { id: 1, text: "About", link: "/about" },
   { id: 2, text: "Experience", link: "/experience" },
-  { id: 3, text: "Skills", link: "/skills" },
-  { id: 4, text: "Projects", link: "/projects" },
+  { id: 4, text: "Education", link: "/education" },
+  { id: 3, text: "Skills & Projects", link: "/skills-and-projects" },
   { id: 5, text: "Contact", link: "/contact" },
 ];
 

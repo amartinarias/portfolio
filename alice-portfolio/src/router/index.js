@@ -20,14 +20,14 @@ const routes = [
         component: () => import('@/views/ExperienceSection.vue')
     },
     {
-        path: '/skills',
-        name: 'Skills',
+        path: '/skills-and-projects',
+        name: 'Skills and Projects',
         component: () => import('@/views/SkillsSection.vue')
     },
     {
-        path: '/projects',
-        name: 'Projects',
-        component: () => import('@/views/ProjectsSection.vue')
+        path: '/education',
+        name: 'Education',
+        component: () => import('@/views/EducationSection.vue')
     },
     {
         path: '/contact',

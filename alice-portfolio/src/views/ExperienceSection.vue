@@ -1,4 +1,4 @@
-// ExperienceSection.vue
+// ExperienceSection.vue with properly positioned ocean decoration
 <template>
   <section id="experience" class="section section-dark">
     <div class="container">
@@ -25,6 +25,17 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Ocean wave decoration -->
+    <div class="ocean-decoration">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="var(--light-blue)"
+          fill-opacity="0.2"
+          d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
     </div>
   </section>
 </template>
@@ -81,14 +92,56 @@ const experiences = ref([
       "Implemented OAuth tokens, and endpoints with Flask.",
     ],
   },
+  {
+    id: 5,
+    title: "Engineering Mentee",
+    company: "Cajigo",
+    period: "Aug 2022 - Dec 2022",
+    responsibilities: [
+      "Completed 16-week mentorship program focused on problem-solving and communication skills, pair-programming with Codewars and algorithms, and developing leadership through industry networking sessions",
+    ],
+  },
+  {
+    id: 6,
+    title: "Logistics and Sales Administrator",
+    company: "Cyden",
+    period: "Aug 2020 - Aug 2022",
+    responsibilities: [
+      "Promoted to manage the logistics department as I was exceeding expectations with my work and communication skills at all levels within the business.",
+      "Successfully coordinated the shipment of an average of 30000 hair removal devices each week. Collaborated with the quality, warehouse and production teams enabling delivery deadlines to be met on time.",
+      "Delivered excellent customer service and built stronger relationships with clients on behalf of Cyden.",
+    ],
+  },
+  {
+    id: 7,
+    title: "Finance Co-ordinator",
+    company: "ARUP",
+    period: "Feb 2019 - Aug 2019",
+    responsibilities: [
+      "Supervised the correct delivery of invoices ensuring that these were sent timely and with the correct information.",
+      "Collaborated with the finance team and project managers ensuring clear communication and accuracy of my work. Built a strong knowledge of systems and procedures and worked independently towards my monthly goals.",
+    ],
+  },
 ]);
 </script>
 
 <style scoped>
-.timeline {
+.section {
+  padding: var(--spacing-3xl) 0 calc(var(--spacing-3xl) + 80px); /* Add extra padding at bottom for decoration */
   position: relative;
+  overflow: hidden; /* Important to contain the decoration */
+}
+
+.container {
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  position: relative;
+  z-index: 2; /* Ensure content is above the decoration */
+}
+
+.timeline {
+  position: relative;
 }
 
 .timeline::before {
@@ -139,7 +192,7 @@ const experiences = ref([
 .timeline-content::before {
   content: "";
   position: absolute;
-  left: -15px;
+  /* left: -15px; */
   top: 10px;
   width: 15px;
   height: 15px;
@@ -180,6 +233,24 @@ const experiences = ref([
   margin-bottom: 0;
 }
 
+/* Ocean decoration styles */
+.ocean-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px; /* Set a specific height */
+  overflow: hidden;
+  z-index: 1; /* Lower than content */
+}
+
+.ocean-decoration svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+}
+
 @media (max-width: 768px) {
   .timeline-item {
     padding-left: 40px;
@@ -195,6 +266,10 @@ const experiences = ref([
 
   .timeline-content {
     padding: var(--spacing-md);
+  }
+
+  .ocean-decoration {
+    height: 80px; /* Smaller height on mobile */
   }
 }
 </style>

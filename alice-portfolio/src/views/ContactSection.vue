@@ -142,12 +142,16 @@
           </form>
         </div>
       </div>
-    </div>
-
-    <!-- Ocean-inspired decoration -->
-    <div class="ocean-decoration">
-      <div class="wave wave1"></div>
-      <div class="wave wave2"></div>
+      <!-- Ocean wave decoration at bottom -->
+      <div class="ocean-decoration">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="var(--light-blue)"
+            fill-opacity="0.2"
+            d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          ></path>
+        </svg>
+      </div>
     </div>
   </section>
 </template>
@@ -382,15 +386,22 @@ const submitForm = async () => {
   transform: none;
 }
 
-/* Ocean-themed decorative elements */
+/* Ocean decoration styles */
 .ocean-decoration {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 150px;
+  height: 150px; /* Set a specific height */
   overflow: hidden;
-  z-index: 0;
+  z-index: 1; /* Lower than content */
+}
+
+.ocean-decoration svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
 }
 
 .wave {
