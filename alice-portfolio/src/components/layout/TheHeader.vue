@@ -1,14 +1,14 @@
-// TheHeader.vue
+// src/components/layout/TheHeader.vue - Corrected for Router
 <template>
   <header :class="{ 'header-scrolled': isScrolled }">
     <nav class="nav-container">
-      <div class="logo">AM</div>
+      <router-link to="/" class="logo">AM</router-link>
       <div class="nav-links" :class="{ 'nav-open': menuOpen }">
         <ul>
           <li v-for="item in navItems" :key="item.id">
-            <a :href="item.link" @click.prevent="scrollToSection(item.link)">{{
-              item.text
-            }}</a>
+            <router-link :to="item.link" @click="menuOpen = false">
+              {{ item.text }}
+            </router-link>
           </li>
         </ul>
       </div>
@@ -27,12 +27,13 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 const isScrolled = ref(false);
 const menuOpen = ref(false);
 
+// Updated navItems to use router paths instead of hash links
 const navItems = [
-  { id: 1, text: "About", link: "#about" },
-  { id: 2, text: "Experience", link: "#experience" },
-  { id: 3, text: "Skills", link: "#skills" },
-  { id: 4, text: "Projects", link: "#projects" },
-  { id: 5, text: "Contact", link: "#contact" },
+  { id: 1, text: "About", link: "/about" },
+  { id: 2, text: "Experience", link: "/experience" },
+  { id: 3, text: "Skills", link: "/skills" },
+  { id: 4, text: "Projects", link: "/projects" },
+  { id: 5, text: "Contact", link: "/contact" },
 ];
 
 function checkScroll() {
@@ -44,24 +45,6 @@ function toggleMenu() {
 
   // Prevent scrolling when menu is open on mobile
   document.body.style.overflow = menuOpen.value ? "hidden" : "";
-}
-
-function scrollToSection(sectionId) {
-  const element = document.querySelector(sectionId);
-
-  if (element) {
-    // Close mobile menu if open
-    if (menuOpen.value) {
-      menuOpen.value = false;
-      document.body.style.overflow = "";
-    }
-
-    // Scroll to the element
-    window.scrollTo({
-      top: element.offsetTop - 80, // Account for header height
-      behavior: "smooth",
-    });
-  }
 }
 
 onMounted(() => {
@@ -113,6 +96,7 @@ header {
   border: 2px solid var(--primary-color);
   border-radius: 50%;
   z-index: 101;
+  text-decoration: none;
 }
 
 .nav-links ul {
@@ -123,10 +107,28 @@ header {
 .nav-links ul li a {
   font-weight: 500;
   transition: color var(--transition-fast);
+  text-decoration: none;
+  color: var(--text-color);
+  position: relative;
 }
 
 .nav-links ul li a:hover {
   color: var(--primary-color);
+}
+
+.nav-links a.router-link-active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.nav-links a.router-link-exact-active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
 }
 
 .mobile-toggle {
