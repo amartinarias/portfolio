@@ -147,14 +147,19 @@ function getRandomColor() {
             :key="project.id"
             class="project-card"
           >
-            <div>
+            <div class="project-img-container">
               <!-- Use actual image when available -->
-              <img
+              <div
                 v-if="project.image"
-                :src="project.image"
-                :alt="project.title"
-                class="project-img"
-              />
+                class="project-img-wrapper"
+                style="background-color: #333333"
+              >
+                <img
+                  :src="project.image"
+                  :alt="project.title"
+                  class="project-img"
+                />
+              </div>
               <!-- Fallback to placeholder if no image -->
               <div
                 v-else
@@ -402,6 +407,32 @@ function getRandomColor() {
 .project-card:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+/* New styles for both image types */
+.project-img-container {
+  width: 100%;
+  position: relative;
+}
+
+.project-img-wrapper {
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  position: relative;
+  overflow: hidden;
+}
+
+.project-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
 .project-img-placeholder {
