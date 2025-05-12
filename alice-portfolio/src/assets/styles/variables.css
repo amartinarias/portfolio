@@ -1,0 +1,40 @@
+:root {
+  /* Ocean-inspired color palette */
+  --primary-color: #2e86de;
+  --secondary-color: #54a0ff;
+  --dark-blue: #0c2461;
+  --light-blue: #70a1ff;
+  --accent-color: #5758BB;
+  --background: #f5f6fa;
+  --text-color: #2f3640;
+  --light-text: #f5f6fa;
+  --gradient-bg: linear-gradient(135deg, #54a0ff 0%, #00d2d3 100%);
+
+  /* Font sizes */
+  --font-small: 0.875rem;
+  --font-medium: 1rem;
+  --font-large: 1.25rem;
+  --font-xl: 1.5rem;
+  --font-2xl: 2rem;
+  --font-3xl: 2.5rem;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Border radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 20px;
+
+  /* Transitions */
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
+}
