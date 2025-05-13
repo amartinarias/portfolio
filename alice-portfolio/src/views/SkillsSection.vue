@@ -12,21 +12,22 @@ const highlightedSkills = [
   "Firebase",
   "Figma",
   "GitHub",
+  "Node JS",
 ];
 
 const skills = ref({
   programming: [
-    { id: 1, name: "VueJS" },
+    { id: 1, name: "Vue JS" },
     { id: 2, name: "JavaScript" },
     { id: 3, name: "HTML5" },
     { id: 4, name: "CSS3" },
     { id: 5, name: "Python" },
     { id: 6, name: "Flask" },
-    { id: 7, name: "OOP" },
+    { id: 7, name: "Node JS" },
     { id: 8, name: "MySQL" },
     { id: 9, name: "REST APIs" },
-    { id: 11, name: "MongoDB" },
-    { id: 12, name: "Vuetify" },
+    { id: 10, name: "MongoDB" },
+    { id: 11, name: "Vuetify" },
   ],
   tools: [
     { id: 1, name: "Firebase" },
@@ -63,11 +64,19 @@ const projects = ref([
   },
   {
     id: 3,
-    title: "Villo-Design",
-    subtitle: "E-Commerce Platform",
+    title: "Mental Health & Care Industry Progressive Web Applications",
+    subtitle: "Major UK Healthcare Provider (Under NDA)",
     description:
-      "An e-commerce website built as part of a group project, using Python, Shopify Liquid, HTML and CSS. Worked on the wireframe using Figma and following Agile principles.",
-    tags: ["Vue JS", "Vuetify", "MongoDB", "Redis"],
+      "Developed and maintained several Progressive Web Applications for a leading UK-based home care organisation serving over 50,000 clients. Contributed to both backend and frontend development, implementing new features and resolving complex issues. Built robust solutions using Vue.js for the frontend with Vuetify and PrimeVue component frameworks, while leveraging Node.js, MongoDB, and Redis on the backend to ensure optimal performance and data integrity.",
+    tags: [
+      "Vue.js",
+      "Vuetify",
+      "MongoDB",
+      "Redis",
+      "Node.js",
+      "PrimeVue",
+      "Firebase",
+    ],
   },
 ]);
 
