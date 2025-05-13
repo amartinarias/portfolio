@@ -7,10 +7,6 @@
   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel"/>
 </div>
 
-<p align="center">
-  <img src="https://via.placeholder.com/800x400?text=Portfolio+Screenshot" alt="Portfolio Screenshot" width="800"/>
-</p>
-
 Welcome to my personal developer portfolio built with Vue and Vite. This site showcases my projects, skills, and contact information with smooth animations and an engaging modern design.
 
 ## 🌐 Live Demo
