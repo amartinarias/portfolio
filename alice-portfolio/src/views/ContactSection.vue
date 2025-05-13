@@ -89,7 +89,7 @@
           </div>
         </div>
 
-        <div class="contact-form-container">
+        <!-- <div class="contact-form-container">
           <form class="contact-form" @submit.prevent="submitForm">
             <div class="form-group">
               <label for="name">Name</label>
@@ -140,18 +140,15 @@
               {{ successMessage }}
             </p>
           </form>
-        </div>
+        </div> -->
       </div>
-      <!-- Ocean wave decoration at bottom -->
-      <div class="ocean-decoration">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path
-            fill="var(--light-blue)"
-            fill-opacity="0.2"
-            d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-          ></path>
-        </svg>
-      </div>
+    </div>
+
+    <!-- Wave animation container -->
+    <div class="wave-container">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
     </div>
   </section>
 </template>
@@ -246,10 +243,43 @@ const submitForm = async () => {
 </script>
 
 <style scoped>
+.section {
+  position: relative;
+  padding: var(--spacing-3xl) 0 var(--spacing-5xl);
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 5; /* Higher z-index to ensure it's above waves */
+}
+
+.section-title {
+  font-size: var(--font-2xl);
+  margin-bottom: var(--spacing-2xl);
+  text-align: center;
+  color: var(--primary-color);
+  font-weight: 700;
+  position: relative;
+}
+
+.section-title:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 3px;
+}
+
 .contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-2xl);
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto 120px; /* Add bottom margin to position above waves */
   position: relative;
 }
 
@@ -257,14 +287,17 @@ const submitForm = async () => {
   background-color: white;
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-lg);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  height: fit-content;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 10; /* Ensure it's above the waves */
+  margin-bottom: -50px; /* Make it overlap with the waves */
 }
 
-.contact-info p {
-  margin-bottom: var(--spacing-xl);
-  font-size: var(--font-medium);
-  line-height: 1.7;
+.contact-info:hover {
+  transform: translateY(-5px);
 }
 
 .contact-details {
@@ -277,34 +310,126 @@ const submitForm = async () => {
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  transition: background-color 0.3s ease;
+}
+
+.contact-method:hover {
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .icon-container {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-method:hover .icon-container {
+  transform: scale(1.1);
+  background-color: var(--dark-blue);
 }
 
 .contact-text h4 {
   font-size: var(--font-medium);
   margin-bottom: var(--spacing-xs);
   color: var(--primary-color);
+  font-weight: 600;
 }
 
 .contact-text a {
   color: var(--text-color);
   transition: color var(--transition-fast);
+  font-size: var(--font-medium);
+  text-decoration: none;
+  position: relative;
+}
+
+.contact-text a:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
 }
 
 .contact-text a:hover {
   color: var(--primary-color);
 }
 
+.contact-text a:hover:after {
+  width: 100%;
+}
+
+/* Wave animation */
+.wave-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  z-index: 2; /* Lower z-index to ensure it's below the contact box */
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100px;
+  background-repeat: repeat-x;
+  background-position: 0 bottom;
+  transform-origin: center bottom;
+}
+
+.wave1 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%232e86de'%3E%3C/path%3E%3C/svg%3E");
+  animation: wave-animation 25s linear infinite;
+  z-index: 3;
+  opacity: 0.5;
+  height: 100px; /* Increased height */
+}
+
+.wave2 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%232e86de'%3E%3C/path%3E%3C/svg%3E");
+  animation: wave-animation 20s linear infinite;
+  z-index: 2;
+  opacity: 0.3;
+  height: 80px; /* Increased height */
+}
+
+.wave3 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%232e86de'%3E%3C/path%3E%3C/svg%3E");
+  animation: wave-animation 15s linear infinite;
+  z-index: 1;
+  opacity: 0.2;
+  height: 60px; /* Increased height */
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0) translateZ(0);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0);
+  }
+}
+
+/* Contact form styles (kept as commented code) */
 .contact-form-container {
   position: relative;
   z-index: 1;
@@ -386,70 +511,44 @@ const submitForm = async () => {
   transform: none;
 }
 
-/* Ocean decoration styles */
-.ocean-decoration {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 150px; /* Set a specific height */
-  overflow: hidden;
-  z-index: 1; /* Lower than content */
-}
-
-.ocean-decoration svg {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: auto;
-}
-
-.wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 200%;
-  height: 100px;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%232e86de" fill-opacity="0.2" d="M0,224L40,213.3C80,203,160,181,240,181.3C320,181,400,203,480,202.7C560,203,640,181,720,181.3C800,181,880,203,960,208C1040,213,1120,203,1200,186.7C1280,171,1360,149,1400,138.7L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>');
-  background-size: 100% 100%;
-  animation: wave-animation 15s linear infinite;
-}
-
-.wave1 {
-  opacity: 0.3;
-  animation-duration: 15s;
-}
-
-.wave2 {
-  opacity: 0.2;
-  animation-delay: -5s;
-  animation-duration: 20s;
-}
-
-@keyframes wave-animation {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 @media (max-width: 768px) {
   .contact-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: var(--spacing-xl);
+    margin-bottom: 80px; /* Adjusted for mobile */
   }
 
-  .ocean-decoration {
+  .wave-container {
     height: 100px;
   }
 
   .wave {
     height: 50px;
+  }
+
+  .section-title {
+    font-size: var(--font-xl);
+  }
+
+  .section-title:after {
+    width: 60px;
+  }
+
+  .icon-container {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact-text h4 {
+    font-size: calc(var(--font-medium) - 2px);
+  }
+
+  .contact-text a {
+    font-size: calc(var(--font-medium) - 2px);
+  }
+
+  .contact-info {
+    margin-bottom: -30px; /* Adjusted overlap for mobile */
   }
 }
 </style>
