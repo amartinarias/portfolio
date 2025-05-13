@@ -1,6 +1,6 @@
 {
   "name": "alice-portfolio",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
     "vite": "^6.2.4",
     "vite-plugin-vue-devtools": "^7.7.2"
