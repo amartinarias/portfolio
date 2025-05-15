@@ -551,4 +551,61 @@ const submitForm = async () => {
     margin-bottom: -30px; /* Adjusted overlap for mobile */
   }
 }
+@media (max-width: 768px) {
+  /* Add more padding at the top of the section on mobile */
+  .section {
+    padding-top: var(--spacing-4xl);
+  }
+
+  /* Fix for the title being too close to the top */
+  .section-title {
+    font-size: var(--font-xl);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  /* Fix for the squished email icon */
+  .icon-container {
+    min-width: 40px; /* Ensure minimum width */
+    min-height: 40px; /* Ensure minimum height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Make contact methods more readable on mobile */
+  .contact-method {
+    padding: var(--spacing-sm);
+    align-items: flex-start; /* Align to top for better layout */
+  }
+
+  /* Add more space between contact info items */
+  .contact-details {
+    gap: var(--spacing-xl);
+  }
+
+  /* Ensure the contact info box has enough padding */
+  .contact-info {
+    padding: var(--spacing-lg);
+    margin-bottom: 50px; /* More space before waves */
+  }
+
+  /* Ensure wave container doesn't overlap too much with content */
+  .wave-container {
+    height: 80px;
+  }
+
+  /* Adjust the content margin to prevent overlap issues */
+  .contact-content {
+    margin-bottom: 100px;
+  }
+}
+
+/* Fix for any SVG scaling issues */
+@media (max-width: 480px) {
+  .icon-container svg {
+    width: 20px;
+    height: 20px;
+  }
+}
 </style>

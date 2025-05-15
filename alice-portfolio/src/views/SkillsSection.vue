@@ -7,6 +7,7 @@ import recapifyImage from "@/assets/images/recapify.png";
 // Highlighted skills will get extra styling (key skills)
 const highlightedSkills = [
   "VueJS",
+  "React",
   "JavaScript",
   "Vuetify",
   "Firebase",
@@ -18,14 +19,14 @@ const highlightedSkills = [
 const skills = ref({
   programming: [
     { id: 1, name: "Vue JS" },
-    { id: 2, name: "JavaScript" },
-    { id: 3, name: "HTML5" },
-    { id: 4, name: "CSS3" },
-    { id: 5, name: "Python" },
-    { id: 6, name: "Flask" },
+    { id: 2, name: "React" },
+    { id: 3, name: "JavaScript" },
+    { id: 4, name: "HTML5" },
+    { id: 5, name: "CSS3" },
+    { id: 6, name: "Python" },
     { id: 7, name: "Node JS" },
     { id: 8, name: "MySQL" },
-    { id: 9, name: "REST APIs" },
+    { id: 9, name: "Redis" },
     { id: 10, name: "MongoDB" },
     { id: 11, name: "Vuetify" },
   ],
@@ -38,7 +39,6 @@ const skills = ref({
     { id: 6, name: "OAuth" },
     { id: 7, name: "Vuex" },
     { id: 8, name: "Vue Router" },
-    { id: 9, name: "Redis" },
   ],
 });
 
