@@ -12,9 +12,9 @@
             desired results.
           </p>
           <p>
-            With expertise in VueJS, JavaScript, and a range of frontend and
-            backend technologies, I develop applications that are both
-            functional and user-friendly. I've completed the CFG Software
+            With expertise in VueJS, JavaScript, React, Node Js and a range of
+            frontend and backend technologies, I develop applications that are
+            both functional and user-friendly. I've completed the CFG Software
             Engineering Nanodegree and am constantly enhancing my abilities in
             problem-solving, software development, and testing.
           </p>
